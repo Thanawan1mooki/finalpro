@@ -4,6 +4,8 @@ flask
 gunicorn
 ultralytics>=8.2.0
 opencv-python-headless
-numpy
-torch==2.5.1+cpu
+numpy==2.3.4
+
+# CPU wheels from PyTorch index
+torch==2.4.1+cpu
 torchvision==0.19.1+cpu
