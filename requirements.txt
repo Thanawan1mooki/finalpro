@@ -4,7 +4,10 @@ ultralytics>=8.2.0
 opencv-python-headless
 numpy
 
-# ใช้ CPU wheels ของ PyTorch (บังคับใช้แหล่งนี้อย่างเดียว)
---index-url https://download.pytorch.org/whl/cpu
+# ใช้ PyPI เป็นหลัก และเพิ่มแหล่ง wheel ของ PyTorch CPU เป็นแหล่งเสริม
+--index-url https://pypi.org/simple
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# กำหนดเวอร์ชัน torch/torchvision สำหรับ CPU
 torch==2.5.1+cpu
 torchvision==0.19.1+cpu
