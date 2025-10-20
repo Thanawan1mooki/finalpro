@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+runs/
+uploads/
+temp/
+*.log
+*.dll
+*.pyd
+*.exe
+*.so
+*.bin
+.vscode/

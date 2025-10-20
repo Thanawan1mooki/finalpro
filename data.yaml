@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['Overripe', 'Raw', 'Ripe', 'Rotten', 'Unripe']
+
+roboflow:
+  workspace: banana-dpadx
+  project: banana-class-ripeness-ow2rg
+  version: 11
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/banana-dpadx/banana-class-ripeness-ow2rg/dataset/11

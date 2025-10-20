@@ -1,0 +1,254 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลการวิเคราะห์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+            text-align: left;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        li {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            color: #34495e;
+            font-size: 1.05rem;
+        }
+        a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ผลลัพธ์</h2>
+        <img src="{{ image_path }}" alt="ภาพกล้วยที่วิเคราะห์แล้ว"><br><br>
+        <ul>
+            {% for r in results %}
+            <li>กล้วย {{ r.index }}: {{ r.label }} (H: {{ r.H }}, S: {{ r.S }}, V: {{ r.V }})</li>
+            {% endfor %}
+        </ul>
+        <a href="/">วิเคราะห์ใหม่</a>
+    </div>
+</body>
+</html> -->
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลการวิเคราะห์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+            text-align: left;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        li {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            color: #34495e;
+            font-size: 1.05rem;
+        }
+        a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ผลลัพธ์</h2>
+        <img src="{{ image_path }}" alt="ภาพกล้วยที่วิเคราะห์แล้ว"><br><br>
+        <ul>
+            {% for r in results %}
+            <li>
+                {% if r.index == 0 %} {# ตรวจสอบว่าเป็นข้อความสถานะหรือไม่ #}
+                    {{ r.label }}
+                {% else %}
+                    กล้วย {{ r.index }}: {{ r.label }} (Confidence: {{ r.confidence }})
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/">วิเคราะห์ใหม่</a>
+    </div>
+</body>
+</html> -->
+
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banana Ripeness</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body class="theme-yellow">
+  <header class="app-bar">
+    <div class="brand">
+      <span class="banana">🍌</span>
+      <span class="title-outline">Banana Ripeness</span>
+    </div>
+  </header>
+
+  <main class="container result-grid">
+    <!-- กล่องรูป -->
+    <section class="photo-box">
+      {% if image_path %}
+        <img class="photo-placeholder" src="{{ image_path }}" alt="ภาพกล้วยที่วิเคราะห์แล้ว">
+      {% else %}
+        <div class="photo-placeholder"></div>
+      {% endif %}
+    </section>
+
+    <!-- กล่องผลวิเคราะห์ -->
+    <section class="result-box">
+      <h2 class="subhead">Banana ripeness level</h2>
+      <div class="para">
+        {% if results and results|length > 0 %}
+          <ul class="plain-list">
+            {% for r in results %}
+              <li>
+                {% if r.index == 0 %}
+                  {{ r.label }}
+                {% else %}
+                  กล้วย {{ r.index }}: {{ r.label }} (Confidence: {{ r.confidence }})
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          ไม่พบกล้วยในภาพ
+        {% endif %}
+      </div>
+
+      <!-- Nutrition -->
+      <h2 class="subhead mtop">Nutrition information</h2>
+      <p class="para">
+        {{ nutrition_text or "—" }}
+      </p>
+    </section>
+
+    <!-- ประโยชน์ -->
+    <section class="benefit-box">
+      <h2 class="subhead">Health benefits</h2>
+      <p class="para">
+        {{ benefit_text or "—" }}
+      </p>
+    </section>
+
+    <a class="home-fab" href="{{ url_for('index') }}" aria-label="กลับหน้าแรก">🏠</a>
+  </main>
+</body>
+</html>
