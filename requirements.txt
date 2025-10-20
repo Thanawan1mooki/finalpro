@@ -8,6 +8,9 @@ numpy
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch>=2.5.1+cpu
 torchvision>=0.19.1+cpu
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> db1463e (fix: downgrade torchvision to 0.19.1+cpu for Render)
 
