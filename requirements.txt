@@ -4,7 +4,7 @@ ultralytics>=8.2.0
 opencv-python-headless
 numpy
 
-# ติดตั้ง Torch CPU จากช่องทางหลัก
---extra-index-url https://download.pytorch.org/whl/cpu
+# ใช้ CPU wheels ของ PyTorch (บังคับใช้แหล่งนี้อย่างเดียว)
+--index-url https://download.pytorch.org/whl/cpu
 torch==2.5.1+cpu
 torchvision==0.19.1+cpu
