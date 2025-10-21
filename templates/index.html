@@ -203,6 +203,57 @@
   <title>Banana Ripeness</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
+  <style>
+    /* เฉพาะสไตล์พรีวิว */
+    .upload-card {
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .dropzone {
+      position: relative;
+      display: block;
+      border: 2px dashed #E8C85A;
+      border-radius: 16px;
+      padding: 16px;
+      width: 100%;
+      max-width: 620px;
+      min-height: 280px;
+      background: #FFF7D5;
+      cursor: pointer;
+      overflow: hidden;
+      transition: outline .15s;
+    }
+    .dropzone.drag { outline: 2px solid #F3CA45; }
+
+    .dropzone .drop-inner {
+      position: absolute;
+      inset: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #C7A945;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+    .plus { font-size: 60px; line-height: 1; }
+    .watermark { font-size: 42px; opacity: .28; }
+
+    /* ภาพพรีวิว */
+    .preview-img {
+      position: absolute;
+      inset: 16px;
+      width: calc(100% - 32px);
+      height: calc(100% - 32px);
+      object-fit: contain;
+      border-radius: 12px;
+      display: none;
+    }
+    .dropzone.has-image .drop-inner { opacity: 0; }
+    .dropzone.has-image .preview-img { display: block; }
+  </style>
 </head>
 
 <body class="theme-yellow">
@@ -216,21 +267,68 @@
   <main class="container">
     <h1 class="section-title">Upload your Banana</h1>
 
+    <!-- ฟอร์มเดิมได้เลย ยัง POST ไป Flask เมื่อกด UPLOAD -->
     <form class="upload-card" method="post" enctype="multipart/form-data">
       <label class="dropzone" for="image">
-        <input id="image" name="image" type="file" accept="image/*" required hidden />
+        <input id="image" name="image" type="file" accept="image/*" hidden required>
+        <img id="preview-img" class="preview-img" alt="Preview">
         <div class="drop-inner">
           <div class="plus">+</div>
           <div class="watermark">Banana</div>
         </div>
       </label>
 
-      <button class="btn primary" type="submit">UPLOAD</button>
+      <button id="btn-upload" class="btn primary" type="submit" disabled>UPLOAD</button>
     </form>
 
     {% if error_message %}
       <p class="error-message">{{ error_message }}</p>
     {% endif %}
   </main>
+
+  <script>
+    const input    = document.getElementById('image');
+    const dropzone = document.querySelector('.dropzone');
+    const preview  = document.getElementById('preview-img');
+    const btn      = document.getElementById('btn-upload');
+
+    // เมื่อเลือกไฟล์ -> พรีวิวทันที (ไม่อัปโหลด)
+    input.addEventListener('change', () => {
+      const file = input.files && input.files[0];
+      if (!file) {
+        dropzone.classList.remove('has-image');
+        preview.src = '';
+        btn.disabled = true;
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        dropzone.classList.add('has-image');
+        btn.disabled = false; // เปิดปุ่มอัปโหลด
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // รองรับ Drag & Drop
+    ['dragenter','dragover'].forEach(ev => 
+      dropzone.addEventListener(ev, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        dropzone.classList.add('drag');
+      })
+    );
+    ['dragleave','drop'].forEach(ev =>
+      dropzone.addEventListener(ev, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        dropzone.classList.remove('drag');
+      })
+    );
+    dropzone.addEventListener('drop', (e) => {
+      const file = e.dataTransfer.files && e.dataTransfer.files[0];
+      if (!file) return;
+      input.files = e.dataTransfer.files; // ผูกไฟล์เข้ากับ input จริง
+      input.dispatchEvent(new Event('change')); // กระตุ้นพรีวิว
+    });
+  </script>
 </body>
 </html>
